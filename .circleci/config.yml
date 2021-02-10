@@ -1,6 +1,7 @@
 version: 2.1
+
 jobs:
-   build:
+  build:
     docker:
       - image: circleci/node:15.5.0
     working_directory: ~/repo
@@ -48,7 +49,7 @@ jobs:
       - run:
           name: Deploy to AWS S3
           command: |
-            if [ "${CURRENT_BRANCH}" == "main" ]
+            if [ "${CURRENT_BRANCH}" == "master" ]
             then
               aws --region ${AWS_REGION} s3 sync ~/repo/build s3://${AWS_BUCKET_PRODUCTION} --delete
             elif [ "${CURRENT_BRANCH}" == "staging" ]
@@ -85,7 +86,7 @@ jobs:
           name: Deploy to AWS Cloudfront
           command: |
             aws configure set preview.cloudfront
-            if [ "${CURRENT_BRANCH}" == "main" ]
+            if [ "${CURRENT_BRANCH}" == "master" ]
             then
               aws cloudfront create-invalidation --distribution-id ${PRODUCTION_DISTRIBUTION_ID} --paths /\*
             elif [ "${CURRENT_BRANCH}" == "staging" ]
@@ -106,7 +107,7 @@ workflows:
               only:
                 - develop
                 - staging
-                - main
+                - master
       - deploy-to-aws-cloudfront:
           requires:
             - deploy-to-aws-s3
@@ -115,4 +116,4 @@ workflows:
               only:
                 - develop
                 - staging
-                - main
+                - master
