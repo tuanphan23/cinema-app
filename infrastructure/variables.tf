@@ -1,7 +1,7 @@
 variable "prefix" {
-  default = "cinemadb-react"
+  default = "cinemadb-react-tuan"
 }
 
 variable "project" {
-  default = "cinemadb-react"
+  default = "cinemadb-react-tuan"
 }
