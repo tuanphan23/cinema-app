@@ -319,12 +319,12 @@ workflows:
           type: approval
           requires:
             - deploy-to-aws-cloudfront
-      - terraform-destroy:
-          requires:
-            - hold
-          filters:
-            branches:
-              only:
-                - develop
-                - staging
-                - main
+      # - terraform-destroy:
+      #     requires:
+      #       - hold
+      #     filters:
+      #       branches:
+      #         only:
+      #           - develop
+      #           - staging
+      #           - main
