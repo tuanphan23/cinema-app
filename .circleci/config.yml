@@ -315,10 +315,10 @@ workflows:
                 - develop
                 - staging
                 - main
-      - hold:
-          type: approval
-          requires:
-            - deploy-to-aws-cloudfront
+      # - hold:
+      #     type: approval
+      #     requires:
+      #       - deploy-to-aws-cloudfront
       # - terraform-destroy:
       #     requires:
       #       - hold
