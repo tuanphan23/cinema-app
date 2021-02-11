@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 
 import './App.scss';
 import Header from './components/header/Header';
-import Main from './components/main/main';
+import Main from './components/main/Main';
 import store from './redux/store';
 
 const App = () => {
