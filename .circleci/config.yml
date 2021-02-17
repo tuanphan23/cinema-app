@@ -333,18 +333,18 @@ workflows:
                 - develop
                 - staging
                 - main
-      - publish-to-docker-hub:
-          requires:
-            - terraform-plan-and-apply
-          filters:
-            branches:
-              only:
-                - develop
-                - staging
-                - main
+      # - publish-to-docker-hub:
+      #     requires:
+      #       - terraform-plan-and-apply
+      #     filters:
+      #       branches:
+      #         only:
+      #           - develop
+      #           - staging
+      #           - main
       - deploy-to-aws-s3:
           requires:
-            - publish-to-docker-hub
+            - terraform-plan-and-apply
           filters:
             branches:
               only:
