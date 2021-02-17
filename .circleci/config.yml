@@ -344,7 +344,7 @@ workflows:
       #           - main
       - deploy-to-aws-s3:
           requires:
-            - publish-to-docker-hub
+            - terraform-plan-and-apply
           filters:
             branches:
               only:
